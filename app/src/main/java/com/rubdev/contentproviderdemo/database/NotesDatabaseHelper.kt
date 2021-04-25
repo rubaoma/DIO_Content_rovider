@@ -8,19 +8,21 @@ import java.sql.SQLClientInfoException
 
 class NotesDatabaseHelper(
     context: Context
-): SQLiteOpenHelper(context, "databaseNotes", null, 1){
+) : SQLiteOpenHelper(context, "databaseNotes", null, 1) {
     override fun onCreate(db: SQLiteDatabase?) {
-        db?.execSQL("CREATE TABLE $TABLE_NOTES (" +
-                "$_ID INTEGER NOT NULL PRIMARY KEY)"+
-        "$TITLE_NOTES TEXT NOT NULL, " +
-        "$DESCRIPTION_NOTES TEXT NOT NULL)")
+        db?.execSQL(
+            "CREATE TABLE $TABLE_NOTES (" +
+                    "$_ID INTEGER NOT NULL PRIMARY KEY," +
+                    "$TITLE_NOTES TEXT NOT NULL," +
+                    "$DESCRIPTION_NOTES TEXT NOT NULL)"
+        )
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         TODO("Not yet implemented")
     }
 
-    companion object{
+    companion object {
         const val TABLE_NOTES: String = "Notes"
         const val TITLE_NOTES: String = "Title"
         const val DESCRIPTION_NOTES: String = "description"
